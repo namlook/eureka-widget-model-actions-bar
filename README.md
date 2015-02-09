@@ -1,6 +1,35 @@
 # Eureka-widget-model-actions-bar
 
-This README outlines the details of collaborating on this Ember addon.
+An action bar for Eureka's models
+
+    {
+        type: 'model-actions-bar',
+        actions: [
+            { // regular action (you will have to implement the action into the controller)
+                name: 'simpleAction', // the name of the triggered action
+                label: 'simple action',
+                icon: 'glyphicon glyphicon-pencil' // icon css classes
+            },
+            { // route transition action
+                name: 'edit',
+                route: 'user.model.edit' // the full ember route
+            },
+            { // toggle action
+                name: 'toggleIsExtinct',
+                field: 'isExtinct',
+                toggle: {
+                    true: {
+                        label: 'set extinct',
+                        next: false,
+                    },
+                    false: {
+                        label: 'unextinct',
+                        next: true
+                    }
+                }
+            }
+        ]
+    }
 
 ## Installation
 

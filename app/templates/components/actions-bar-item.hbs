@@ -1,0 +1,11 @@
+{{#if route}}
+    {{#unless isCurrentRoute}}
+        <li>{{#link-to route model._id}}{{label}}{{/link-to}}</li>
+    {{/unless}}
+{{else}}
+    {{#if isToggleAction}}
+        <li><a {{action 'toggle'}}>{{label}}</a></li>
+    {{else}}
+        <li><a {{action "actionTriggered" name}}>{{label}}</a></li>
+    {{/if}}
+{{/if}}

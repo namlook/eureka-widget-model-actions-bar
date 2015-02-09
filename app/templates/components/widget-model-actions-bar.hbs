@@ -1,0 +1,9 @@
+<ul>
+    {{#each actionConfig in config.actions}}
+        {{actions-bar-item
+            actionConfig=actionConfig
+            currentRouteName=currentRouteName
+            model=model
+            toControllerAction="toControllerAction"}}
+    {{/each}}
+</ul>
