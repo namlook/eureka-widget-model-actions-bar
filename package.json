@@ -1,6 +1,6 @@
 {
   "name": "eureka-widget-model-actions-bar",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An action bar for Eureka's models",
   "directories": {
     "doc": "doc",
