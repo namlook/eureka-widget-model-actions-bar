@@ -1,11 +1,21 @@
 {{#if route}}
     {{#unless isCurrentRoute}}
-        <li>{{#link-to route model._id}}{{label}}{{/link-to}}</li>
+        {{#link-to route model._id}}
+            {{#if iconCssClass}} <span {{bind-attr class="iconCssClass"}}></span> {{/if}}
+            {{label}}
+        {{/link-to}}
     {{/unless}}
 {{else}}
+
     {{#if isToggleAction}}
-        <li><a {{action 'toggle'}}>{{label}}</a></li>
+        <a {{action 'toggle'}}>
+            {{#if iconCssClass}} <span {{bind-attr class="iconCssClass"}}></span> {{/if}}
+            {{label}}
+        </a>
     {{else}}
-        <li><a {{action "actionTriggered" name}}>{{label}}</a></li>
+        <a {{action "actionTriggered" name}}>
+            {{#if iconCssClass}} <span {{bind-attr class="iconCssClass"}}></span> {{/if}}
+            {{label}}
+        </a>
     {{/if}}
 {{/if}}

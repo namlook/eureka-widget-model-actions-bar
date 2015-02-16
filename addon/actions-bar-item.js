@@ -1,27 +1,46 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+    tagName: 'li',
+    classNames: ['presentation', 'pull-right'],
+
     actionConfig: null,
     model: null,
     currentRouteName: null,
 
     name: Ember.computed.alias('actionConfig.name'),
 
+    iconCssClass: function() {
+        var icon;
+
+        if (this.get('isToggleAction')) {
+            var currentState = this.get('currentToggleState');
+            icon = this.get('actionConfig.toggle.'+currentState+'.icon');
+        } else {
+            icon = this.get('actionConfig.icon');
+        }
+
+        return icon;
+    }.property('actionConfig.icon', 'isToggleAction', 'currentToggleState'),
+
     /** the label of the action to display
      * If the action is a toggle action, then the label to display
      * is the label of the current state
      */
     label: function() {
-        var name = this.get('name');
+        var _label;
+
         // if the action is a toggle action, we use the label
         // from the current toggle state
         if (this.get('isToggleAction')) {
             var currentState = this.get('currentToggleState');
-            var nextLabel = this.get('actionConfig.toggle.'+currentState+'.label');
-            return nextLabel || name;
+            _label = this.get('actionConfig.toggle.'+currentState+'.label');
         } else {
-            return this.get('actionConfig.label') || name;
+            var name = this.get('name');
+            _label = this.get('actionConfig.label') || name;
         }
+
+        return _label;
     }.property('actionConfig.label', 'name', 'isToggleAction', 'currentToggleState'),
 
 

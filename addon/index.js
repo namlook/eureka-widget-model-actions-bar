@@ -1,7 +1,9 @@
 import Ember from 'ember';
-import ModelWidget from 'ember-eureka/model-widget';
+import WidgetModel from 'ember-eureka/widget-model';
 
-export default ModelWidget.extend({
+export default WidgetModel.extend({
+    tagName: 'ul',
+    classNames: ['nav', 'nav-pills'],
     currentRouteName: Ember.computed.alias('application.currentRouteName'),
 
     actions: {
